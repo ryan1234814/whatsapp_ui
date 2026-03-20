@@ -28,11 +28,34 @@ function App() {
         body: JSON.stringify({
           messaging_product: 'whatsapp',
           to: targetPhone,
-          type: 'text',
-          text: { body: 'Hi' }
+          type: 'template',
+          template: {
+            // name: 'recharge_template',
+            // language: {
+            //   code: 'en_US',
+            //   policy: 'deterministic'
+            // },
+            // components: [
+            //   {
+            //     type: 'body',
+            //     parameters: [
+            //       {
+            //         type: 'text',
+            //         parameter_name: 'customer_name',
+            //         text: 'Hi'
+            //       }
+            //     ]
+            //   }
+            // ]   
+            name: 'hello_world',
+            language: {
+              code: 'en_US',
+              policy: 'deterministic'
+            }       
+          }
         })
       });
-
+      console.log('API Response:', response);
       const data = await response.json();
 
       if (!response.ok) {
